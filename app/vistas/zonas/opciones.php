@@ -6,8 +6,15 @@
         //var_dump($datos['propietarios']);
     ?>
     <script type='text/javascript'>
-        function haveChanged(){
+        function haveChanged(propietario){
             alert('it has changed');
+            //alert(rows.length);
+            for( i=0; i<rows.length; i++){
+                if( rows[i].propietario == propietario){
+                    alert(rows[i].propietario);
+                }
+            }
+
             var lista_props = new Array();
             <?php
             foreach ($datos['propietarios'] as $key => $propietario) {
