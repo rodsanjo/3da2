@@ -1,0 +1,146 @@
+/* 
+    Document   : juego
+    Created on : 15-nov-2015, 14:18:04
+    Author     : Jorge Rodríguez <jergo23@gmail.com>
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* articulos/juego */
+#datos_articulo{
+    color: green;
+}
+#media_articulo {
+    width: 210px;
+    padding: 5px;
+    margin-bottom: 10px;
+    background: rgba(200,200,15,1);
+    float: left;
+    overflow: hidden;
+    border-radius: 10px 0px 40% 10px;
+}
+#media_articulo * {
+    padding-left: 5px;
+}
+#datos_articulo{ 
+    padding: 0 10px  30px 25px;
+    margin-bottom: 10px;
+    background-color: rgba(200,200,15,0.5);
+    overflow: auto;
+    border-radius: 0px 10px 10px 30%;
+}
+#datos_tecnicos{
+    float: left;
+    margin-right: 20%; /*100px;*/
+}
+#datos_tecnicos img{ 
+    float: right;
+    height: 80px;
+}
+#resenha_articulo{
+    background: darkseagreen;
+    color: yellow;
+    padding: 5px;
+    margin-bottom: 5px;
+    border-radius: 20px 20px 0 0;
+}
+#resenha_articulo p{
+    text-indent: 0.5cm;
+}
+
+/* articulos/index */
+.juego_index{
+    width: 30%;
+    float: left;
+    margin-bottom: 10px;
+}
+.juego_index:hover{
+    width: 30%;
+    float: left;
+    background: khaki;
+    border-radius: 10px;
+    margin: -0px;
+    margin-bottom: 10px;
+    font-size: 100%;
+}
+.juego_index h3{
+    font-family: Comic Sans MS, calibri, Times New Roman, Times, serif;
+    padding: 5px;
+    color: crimson;
+    background: gainsboro;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+
+div.juego_index + div.juego_index{
+    margin-left: 4%;    /* 48+4+48 = 100% */
+}
+
+.flechas_cambio_pagina{
+    clear: both;
+    text-align: center;
+}
+
+.resenha{
+    display: none;
+    padding: 15px;
+    border-radius: 5px 40px;
+    background: darkseagreen;
+}
+.masDetalles{
+    cursor: pointer;
+    clear: both;
+}
+.masDetalles a{
+    color: purple;
+    font-style: italic;
+}
+.datos_articulo{
+    padding: 0px 10px 10px 15px;
+    margin-bottom: 10px;
+    background-color: khaki;
+    overflow: auto;
+    border-radius: 10px;
+}
+
+.media_articulo {
+    width: 60%;/*120px;*/
+    padding: 5px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    background: rgba(200,200,15,1);
+    float: left;
+    border-radius: 10px;
+}
+.media_articulo * {
+    padding-left: 5px;
+}
+.img_index{
+    width: 150px;
+    float: left;
+    padding-right: 50px;
+}
+/* articulos/index : comentario */
+
+#cuadro_comentario{
+    clear: left;
+    background: khaki;
+    margin-top:10px;
+    padding: 10px;
+    border-radius: 20px 20px 0 0;
+}
+#comentarios{
+    clear: left;
+    background: gainsboro;
+    padding: 1px 10px 10px 10px;
+    border-radius: 0px 0px 30px 30px;
+}
+#texto_comentario{
+    background: white;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 25px;
+}
+.acciones_comentario{
+    float: right;
+

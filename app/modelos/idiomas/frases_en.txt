@@ -1,0 +1,26 @@
+key|sentence
+saludo1|Welcome to 3da2 board games
+mensajeRegistro|<div><b>Successfully created your account.</b><br/><b>Welcome to 3da2 board games!</b><br/><p>In order to use some of the functions of 3da2 board games website, your email address needs to be verified.</p><p>An activation key has been sent to the e-mail address you provided. Please check your e-mail for further information</p><p>Thanks... Enjoy your stay!</p></div>
+mensajeVerificacion|TO VERIFY as a valid email address for the 3da2 Board Games, click on the following link or enter it in your browser.
+Fecha última actualización|Last updated date
+Ver el contenido del baúl|Look inside the chest
+Modificar datos|Update details
+Cambiar contraseña|Change password
+Repita el email|Repeat the email
+Repita la contraseña|Repeat the password
+sinComentarios|Be the first!!
+opina|Write your opinion about this game!
+Reglamento no disponible|Unavailable rules
+Más detalles|More details
+Leer reseña|Read more
+parrafo1|If you love the games, it is your ideal web site. Here you will find a wide range of board games with comments from another players who have tested the article, so you can choose better what will be your choice when you purchase a new board game, and to have more details about it, for a potencial gift or for own enjoyment with relatives and friends. Also you will find accessories to complete your games, and why no, create your own. If you have a game created by you, warn us through our contact form. We can help you to advertise on our web site and in a future distribution. Accept the great ideas! and we are looking forward to hearing them from you and to having a good time together.
+Reglamentos de juegos de mesa|Rules of boardgames
+Reglamentos de juego disponibles|Rules of boardgames available
+paraContactar|If you want to contact with us for any query, you can contact us by our email: <a href="mailto:3da2@rodsanjo.zz.mu"> 3da2@rodsanjo.zz.mu </a> or by the form below and we will reply as soon as possible.
+totalDescargas|Number of downloads
+Reglamento de|Rules about
+Enanos de Breslavia|Breslau's dwarves
+Últimas novedades|Latest news
+nº jugadores min|minimum number players 
+nº jugadores max|maximum number players
+Enanos encontrados en Breslavia|Found dwarves in Breslau

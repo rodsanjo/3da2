@@ -1,0 +1,73 @@
+key|word
+title|3da2 boardgames
+Bienvenido|Welcome
+Bienvenido a|Welcome to
+saludo1|Welcome to 3da2
+Seleccinar|Select
+Saludo|Greeting
+inicio|home
+juegos de mesa|boardgames
+juegos de tablero|table games
+juegos de cartas|card games
+juegos de dados|dice games
+2 jugadores|2 players
+solitarios|solitaire
+Accesorios|Accesories
+Expansiones|Expansions
+Expansiones de juegos|Boardgames expansions
+Galería|Galery
+Reglamentos|Rules
+Enanos|Dwarves
+Enlaces|Links
+contacto|Contact
+Revista|Magazine
+Libros|Books
+Diseñada por|Designed by
+Fecha última actualización|Last updated date
+Idioma|Language
+Alemán|German
+Español|Spanish
+Inglés|English
+Portugués|Portuguese
+Polaco|Polish
+Contactar|Contact
+parrafo1|Welcome to my library where you can find out some fascinating books. Some of them are highly recommended reading, although it depends on the tastes of every reader to achieve an interesting reading, getting immersion in each adventure.
+Conectarse|Log in
+Desconectarse|Log out
+Registrarse|Sign up
+Usuario|Login
+Contraseña|Password
+Enviar|Send
+Cancelar|Cancel
+Restablecer|Restore
+Baúl|Chest
+Baúl vacío|Empty chest
+Mostrar|Show
+Ocultar|Hide
+Artículos|Articles
+Volver|Come back
+Subir|Go up
+Artículos disponibles|Available articles
+Editar|Edit
+Editado|Edited
+Eliminar|Remove
+veces|times
+Comprar|Purchase
+Vaciar|Empty
+añadir|add
+Producto|Article
+total|
+acciones|actions
+Precio|Price
+Buscar|Search
+Enlaces de interés|useful links
+Galeria de imagenes|Image Gallery
+Jugadores|Players
+Edad|Age
+Duración|Duration
+Nombre|Name
+Ordenar|Sort
+Precio descendente|Descending price
+Comentarios|Comments
+escribió|wrote
+fecha|date

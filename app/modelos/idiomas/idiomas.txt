@@ -1,0 +1,3 @@
+Español||es
+Inglés||en
+Polaco||pl

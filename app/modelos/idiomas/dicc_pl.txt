@@ -1,0 +1,73 @@
+key|word
+title|3da2 boardgames
+Bienvenido|Witamy
+Bienvenido a|Witamy na
+saludo1|Witamy na 3da2
+Seleccinar|Wybierz
+Saludo|Greeting
+inicio|Strona główna
+juegos de mesa| Gry planszowe
+juegos de tablero|Gry planszowe
+juegos de cartas|Gry karciane
+juegos de dados|dice games
+2 jugadores|Dwóch graczy
+solitarios|solitaire
+Accesorios|Akcesoria
+Expansiones|Expansions
+Expansiones de juegos|Boardgames expansions
+Galería|Galeria
+Reglamentos|Zasady
+Enanos|Krasnale
+Enlaces|Linki
+Contacto|Kontakt
+Revista|Magazyn
+Libros|Książki
+Diseñada por|Zaprojektowany przez
+contacto|kontakt
+Fecha última actualización|Data ostatniej modyfikacji
+Idioma|Język
+Alemán|Niemiecki
+Español|Hiszpański
+Inglés|Angielski
+Portugués|Portugalski
+Polaco|Polski
+Contactar|Kontakt
+Conectarse|Zaloguj się
+Desconectarse|Wyloguj się
+Registrarse|Zarejestruj się
+Usuario|Login
+Contraseña|Hasło
+Enviar|Wyślij
+Cancelar|Anuluj
+Restablecer|Przywróć
+Baúl|Skrzynia
+Baúl vacío|Pusta skrzynia
+Mostrar|Pokaż
+Ocultar|Ukryj
+Artículos|Artykuły
+Volver|Powróć
+Subir|Unieść się
+Artículos disponibles|Dostępne artykuły
+Editar|Edytuj
+Editado|Edytowany
+Eliminar|Usuń
+veces|czasy
+Comprar|Zakup
+Vaciar|Pusty
+añadir|dodaj
+Producto|artykuł
+total|całkowity
+acciones|accions
+Precio|Cena
+Buscar|Poszukiwanie
+Enlaces de interés|Przydatne linki
+Galeria de imagenes|Galeria zdjęć
+Jugadores|Liczba graczy
+Edad|wiek
+Duración|Czas trwania
+Nombre|Nazwa
+Ordenar|klasyfikować
+Precio descendente|Cena malejąco
+Comentarios|Komentarze
+escribió|napisał
+fecha|data
