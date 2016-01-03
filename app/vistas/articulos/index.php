@@ -35,7 +35,7 @@ $rows = json_encode($datos['filas']);
             var href = '<?php echo $href ?>';
             var img = '<?php echo $img ?>';
             var rangoJug = '<?php echo $rangoJug ?>';
-            //alert(title+', '+articulo_nombre+', '+href+', '+img+', '+rangoJug);
+            alert(title+', '+articulo_nombre+', '+href+', '+img+', '+rangoJug);
             <?php
         }
     }
