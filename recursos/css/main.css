@@ -56,9 +56,6 @@ body{
    display: none;
 }
 
-#sidebar_left{
-    width: 20%;
-}
 /*
 span .submenu { display:none }*/
 
@@ -129,15 +126,10 @@ h2>i{
     font: 900;
 }
 
-#view_content{
-    margin-top: -20px;
-    margin-left: 20%;
-}
-
 #sidebar_right > div{
     text-align: right;
-
 }
+
 #buscar{
     width: 20%;
     float: right;

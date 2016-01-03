@@ -41,7 +41,7 @@
                 id='prop_".$propietario['propietario']."'
                 name='".$propietario['propietario']."'
                 value=".$propietario['propietario'].'
-                onchange="haveChanged(this.value)" > '.$propietario['propietario']
+                onchange="haveChanged(this.value)" checked="checked"> '.$propietario['propietario']
                 ."<br/>";
         }
         ?>

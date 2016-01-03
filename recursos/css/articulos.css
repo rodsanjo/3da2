@@ -49,18 +49,10 @@
 }
 
 /* articulos/index */
-.juego_index{
-    width: 30%;
-    float: left;
-    margin-bottom: 10px;
-}
+
 .juego_index:hover{
-    width: 30%;
-    float: left;
     background: khaki;
     border-radius: 10px;
-    margin: -0px;
-    margin-bottom: 10px;
     font-size: 100%;
 }
 .juego_index h3{
@@ -71,11 +63,11 @@
     border-radius: 10px;
     margin-bottom: 8px;
 }
-
+/*
 div.juego_index + div.juego_index{
     margin-left: 4%;    /* 48+4+48 = 100% */
 }
-
+*/
 .flechas_cambio_pagina{
     clear: both;
     text-align: center;

@@ -72,24 +72,9 @@ $(document).ready(function(){
         }
     );
         
-    $("#ordenar_por").change(
-        function(){
-            
-            $.ajax({
-                method:'POST'
-                ,url: host+name_app+'/articulos/ordenar'
-                ,data: { is_ajax: true, imagenWeb: imagenWeb }
-            })
-            .done(function( data ){
-                
-                $('#view_content').html( data );
-            })
-            .failed(function(){
-                alert('hooola');
-                $('#rightColumn').html( 'imagen no disponible' );
-            })
-        }
-    );
+//    $("#ordenar_por").change(
+//
+//    );
         
     
 });

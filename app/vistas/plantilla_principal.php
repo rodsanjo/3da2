@@ -6,7 +6,7 @@
     ?>
 </head>
 <body>
-    <section id="encabezado">
+    <section id="encabezado" class="container-fluid">
         <div class="teu">
             <div id="titulo_cabecera">
                 <?php 
@@ -26,8 +26,8 @@
 
         <hr/>
     </section>
-    <section class="teu">
-        <div id="sidebar_left">
+    <section class="container-fluid">
+        <div id="sidebar_left" class="col-md-2">
             
             <div id="menu_left_v">
                 <?php 
@@ -56,7 +56,7 @@
             
         </div>
         
-        <div id="view_content">
+        <div id="view_content" class="col-md-10">
             <?php
                 echo $datos['view_content'];
             ?>
@@ -64,7 +64,7 @@
         
         
     </section>
-    <section id="pie">
+    <section id="pie" class="container-fluid">
         <div>
             <?php 
                 include PATH_HOME."app/vistas/zonas/pie.php";

@@ -1,0 +1,24 @@
+# IDE and docs
+nbproject
+docs
+home
+home/*
+
+configuracion.php
+
+# DB
+db_definition
+db
+.htaccess
+
+ficheros
+recursos/sonido/*
+recursos/imagenes/*
+
+# Bootstrap
+*/recursos/bootstrap*
+
+#framework
+home/app/core/*
+home/app/core/sgb
+home/app/core/configuracion.php
