@@ -6,15 +6,9 @@
         //var_dump($datos['propietarios']);
     ?>
     <script type='text/javascript'>
-        function haveChanged(propietario){
-            alert('it has changed');
+        function getPropietarios(propietario){
             //alert(rows.length);
-            for( i=0; i<rows.length; i++){
-                if( rows[i].propietario == propietario){
-                    alert(rows[i].propietario);
-                }
-            }
-
+            
             var lista_props = new Array();
             <?php
             foreach ($datos['propietarios'] as $key => $propietario) {
@@ -22,13 +16,12 @@
                 var prop_seleccionado = "prop_<?php echo $propietario['propietario']; ?>";
                 if( document.getElementById(prop_seleccionado).checked ){
                     lista_props.unshift(prop_seleccionado);
-                    //alert(lista_props);
                 }
             <?php
             }
             ?>
-            var cadena = "'"+lista_props.join("','")+"'";
-            //alert(cadena);
+            console.log(lista_props);
+            return lista_props;
         }
     </script>
     Propietarios:
@@ -41,7 +34,7 @@
                 id='prop_".$propietario['propietario']."'
                 name='".$propietario['propietario']."'
                 value=".$propietario['propietario'].'
-                onchange="haveChanged(this.value)" checked="checked"> '.$propietario['propietario']
+                onchange="setArticulos()" checked="checked"> '.$propietario['propietario']
                 ."<br/>";
         }
         ?>

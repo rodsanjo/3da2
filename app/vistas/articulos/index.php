@@ -6,40 +6,12 @@ $datos["paginacion"]["num_total_juegos"] = count($datos['filas']);
 
 $rows = json_encode($datos['filas']);
 
-
-
 ?>
 
 <script type="text/javascript">
+    var url_root = "<?php echo URL_ROOT ?>";
     var rows = <?php echo $rows ?>;
     //alert(rows);
-    
-    <?php
-    foreach ($datos['filas'] as $key => $fila){ //cada fila corresponde a un juego de mesa        
-        if($key !== 'otros'){
-            $img = ($fila["foto"]) ? "<img class='img_index' src='".URL_ROOT."recursos/imagenes/articulos/".$fila["foto"]."' alt='{$fila['nombre']}' title='{$fila['nombre']}' />" :"";
-            $num_max_jug = isset($fila['num_max_jug'])?$fila['num_max_jug']:null;
-            if(is_null($num_max_jug) || $num_max_jug == $fila['num_min_jug']){
-                $num_max_jug ='';
-            }else{
-                $num_max_jug =' - '.$num_max_jug;
-            }
-            $rangoJug = $fila['num_min_jug'].$num_max_jug;
-            $articulo_nombre = str_replace(" ", "-", $fila['nombre']);
-            $href = \core\URL::generar(array('articulos','juego',$fila['id'], $articulo_nombre));
-            $title = ((isset($fila['resenha']) and strlen($fila['resenha'])) ? $fila['resenha'] : $fila['nombre']); 
-        
-            ?>
-            var title = '<?php echo $title ?>';
-            var articulo_nombre = '<?php echo $articulo_nombre ?>';
-            var href = '<?php echo $href ?>';
-            var img = '<?php echo $img ?>';
-            var rangoJug = '<?php echo $rangoJug ?>';
-            alert(title+', '+articulo_nombre+', '+href+', '+img+', '+rangoJug);
-            <?php
-        }
-    }
-    ?>    
 </script>
 <script type="text/javascript" src="<?php echo URL_ROOT ?>recursos/js/articulos/articulos.js"></script>
 
