@@ -2,7 +2,9 @@
 setArticulos();
 function setArticulos(){
     html = "";
+    $('#articulos').html(html);
     var options = checkedOptions();
+    //console.log(options);
     /*
     for( i=0; i<rows.length; i++){    
         if( rows[i].propietario == propietario){
@@ -10,13 +12,15 @@ function setArticulos(){
         }
     }
     */
-   //alert(options);
+    //html = '';
     $.each(rows,function(index, row){
-        if( $.inArray(row['propietario'], options) ){
-            //console.log(row['nombre']);
+        html = '';
+        if( ! $.inArray('prop_'+row['propietario'], options) ){
+
             articulo_nombre = row['nombre'].replace(/\s/g, "-");
             //articulo_nombre = row['nombre'].replace(" ", "-"); //sustituye solo el primer encuentro
             //console.log(articulo_nombre);
+            //console.log(articulo_nombre+' -> prop_'+row['propietario']);
 
             if( row['foto'] == null ){
                 img = '';
@@ -47,10 +51,12 @@ function setArticulos(){
             html += "<p>Precio:<br/><b class='precio'>"+row['precio']+"€</b></p>";
             html += "<p>Jugadores:<br/>"+rangoJug+"</p>";
             html += "</div><div class='masDetalles'><a class='masDetalles' title='Leer reseña'>Más detalles</a>";
-            html += "<p class='resenha'>{$fila['resenha']}</b></p></div>"
+            html += "<p class='resenha'>"+row['resenha']+"</b></p></div>";
 
-            $('#articulos').appendTo(html)
+            $(html).appendTo('#articulos');
+            //$(html).appendTo(document.getElementById('articulos'));
         }
+        //$('#articulos').html(html);
     });
 }
 
@@ -63,16 +69,17 @@ function checkedOptions(){
 }
 
 function ordenarPor(campo){
-    alert(campo);
+    //alert(campo);
     $('#articulos').html( '' );
-    document.getElementById('articulos').innerHTML = rows[1].propietario;
-    if( rows[1].propietario == '')
+    //document.getElementById('articulos').innerHTML = rows[1].propietario;
+    alert(rows[1].propietario);
+    if( rows[1].propietario == ''){}
 
     html = '<div>';
     html += '<span>'+'hola'+'</span>';
     html += '</div>';
-    alert(html);
-    //$('#articulos').appendTo(html)
+
+    $('#articulos').appendTo(html)
 
 //        alert(tipo_ordenacion);
 //        return url += tipo_ordenacion;

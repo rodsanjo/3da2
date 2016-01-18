@@ -44,9 +44,7 @@
 
             <div id="opciones">
                 <?php
-                if( \core\Distribuidor::get_controlador_instanciado() == 'articulos' ){
                     include PATH_APPLICATION_APP."vistas/zonas/opciones.php";
-                }
                 ?>  
             </div>
      
