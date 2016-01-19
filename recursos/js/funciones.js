@@ -11,7 +11,8 @@ function saludo() {
                    
 }
 
-$(document).ready(function(){
+$(document).ready(function(){ //Se activa cuando la pagina esta preparada
+    setArticulos();
     $("#idioma").mouseenter(function(){
         $("#idioma a").fadeIn(1000);
     });

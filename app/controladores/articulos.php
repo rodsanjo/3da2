@@ -1032,6 +1032,31 @@ class articulos extends \core\Controlador{
         }
 
     }
+    
+    public function ordenarByAjax( array $datos = array(), $is_ajax, $field, $ordenType){
+        //Realizamos la busqueda
+        $post = \core\HTTP_Requerimiento::post();
+        var_dump($datos);
+        
+        \core\Tools::ordenarArray( $datos['filas'], $post['campo'], $datos['orden']);
+
+        if( isset($post['filas'])){
+            $datos['filas'] = unserialize($post['filas']);
+            //var_dump($datos);
+          
+            $datos['orden'] = isset($post['orden']) && $post['orden'] == 'asc' ? false : true;
+            if( isset($post['campo']) ){
+                \core\Tools::ordenarArray( $datos['filas'], $post['campo'], $datos['orden']);
+            }
+        }
+
+        if( is_null($datos) ){
+            $this->index();
+        }else{
+            $this->index($datos);
+        }
+
+    }
 	
 } // Fin de la clase
 ?>

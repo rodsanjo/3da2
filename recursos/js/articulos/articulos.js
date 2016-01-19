@@ -1,5 +1,8 @@
+host = ''; //Host
+host = '/web/jergapps'; //'http://localhost/web/jergapps';
+name_app = '/3da2'
+
 //alert(rows);
-setArticulos();
 function setArticulos(){
     html = "";
     $('#articulos').html(html);
@@ -12,14 +15,12 @@ function setArticulos(){
         }
     }
     */
-    //html = '';
     $.each(rows,function(index, row){
         html = '';
-        if( ! $.inArray('prop_'+row['propietario'], options) ){
+        if( $.inArray('prop_'+row['propietario'], options) >= 0 ){ //inArray devuelve la posicion
 
             articulo_nombre = row['nombre'].replace(/\s/g, "-");
             //articulo_nombre = row['nombre'].replace(" ", "-"); //sustituye solo el primer encuentro
-            //console.log(articulo_nombre);
             //console.log(articulo_nombre+' -> prop_'+row['propietario']);
 
             if( row['foto'] == null ){
@@ -31,9 +32,9 @@ function setArticulos(){
 
             href = url_root+"articulos/juego/"+row['id']+"/"+articulo_nombre;
             if( row['resenha'] != null && row['resenha'].length > 0 ){
-                title = row['resenha']; 
+                resenha = row['resenha'];
             }else{
-                title = row['nombre']; 
+                resenha = row['nombre']; 
             }
             //console.log(title); 
 
@@ -45,13 +46,13 @@ function setArticulos(){
             rangoJug = row['num_min_jug']+num_max_jug;
 
             html = "<div class='juego_index col-md-4'>";
-            html += "<a href='"+href+"' title='"+title+
+            html += "<a href='"+href+"' title='"+row['nombre']+
                 "'><h3 class='titulo_art'>"+row['nombre']+"</h3></a><a href='"+href+
                 "' class='media_articulo'>"+img+"</a><div class='datos_articulo'>";
             html += "<p>Precio:<br/><b class='precio'>"+row['precio']+"€</b></p>";
             html += "<p>Jugadores:<br/>"+rangoJug+"</p>";
             html += "</div><div class='masDetalles'><a class='masDetalles' title='Leer reseña'>Más detalles</a>";
-            html += "<p class='resenha'>"+row['resenha']+"</b></p></div>";
+            html += "<p class='resenha'>"+resenha+"</b></p></div>";
 
             $(html).appendTo('#articulos');
             //$(html).appendTo(document.getElementById('articulos'));
@@ -68,21 +69,42 @@ function checkedOptions(){
     return options;
 }
 
-function ordenarPor(campo){
-    //alert(campo);
+function ordenarPor_old(campo){
+    alert(campo);
     $('#articulos').html( '' );
     //document.getElementById('articulos').innerHTML = rows[1].propietario;
-    alert(rows[1].propietario);
+    //alert(rows[1].propietario);
     if( rows[1].propietario == ''){}
 
     html = '<div>';
     html += '<span>'+'hola'+'</span>';
     html += '</div>';
 
-    $('#articulos').appendTo(html)
+    $(html).appendTo('#articulos');
 
-//        alert(tipo_ordenacion);
+//    alert(tipo_ordenacion);
 //        return url += tipo_ordenacion;
+}
+
+function ordenarPor(campo){
+    console.log(rows);
+    for(i=0; i<formOrdenar.orden.length; i++){
+        if(formOrdenar.orden[i].checked){
+            ordenType = formOrdenar.orden[i].value;
+        }
+    }
+    console.log(ordenType);
+    
+    jQuery.post(
+        host+name_app+'/articulos/ordenarByAjax'
+        ,{rows: rows, is_ajax: "true", field: campo, ordenType: ordenType}
+        ,function(data, textStatus, jqXHR) {
+            rows = data;
+            setArticulos();
+            //$("#articulos").html(data);
+        }
+        
+    );
 }
 
 /*

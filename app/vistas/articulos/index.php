@@ -25,9 +25,10 @@ $rows = json_encode($datos['filas']);
         }
         $values = array('nombre','precio','num_min_jug','propietario','anho');
         ?>
-        <form method='post' action='<?php echo \core\URL::generar("articulos/ordenar"); ?>'>
+        <form name="formOrdenar" method='post' action='<?php echo \core\URL::generar("articulos/ordenar"); ?>'>
             <p>Ordenar por:
                 <select id='ordenar_por' name="campo" onchange="ordenarPor(this.value);">
+                <!--<select id='ordenar_por' name="campo">-->
                     <option value='nombre' ><?php echo iText('Nombre', 'dicc'); ?></option>
                     <option value='precio' ><?php echo iText('Precio', 'dicc'); ?></option>
                     <option value='num_min_jug' ><?php echo iText('nº jugadores min', 'frases'); ?></option>
