@@ -97,13 +97,13 @@ function ordenarPor(campo){
     
     jQuery.post(
         host+name_app+'/articulos/ordenarByAjax'
-        ,{rows: rows, is_ajax: "true", field: campo, ordenType: ordenType}
+        ,{rows: rows, field: campo, ordenType: ordenType, is_ajax: "true"}
         ,function(data, textStatus, jqXHR) {
-            rows = data;
-            setArticulos();
-            //$("#articulos").html(data);
+            //$('#articulos').html( data );
+            //rows = json_encode(data);
+            rows = data
+            setArticulos(rows);
         }
-        
     );
 }
 

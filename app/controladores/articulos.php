@@ -1033,27 +1033,21 @@ class articulos extends \core\Controlador{
 
     }
     
-    public function ordenarByAjax( array $datos = array(), $is_ajax, $field, $ordenType){
-        //Realizamos la busqueda
-        $post = \core\HTTP_Requerimiento::post();
-        var_dump($datos);
+    public function ordenarByAjax( $datos , $field = 'precio', $ordenType = 'asc', $is_ajax='true'){
+        $data = json_decode($datos, true);
+        if($ordenType == 'asc')
+            $ordenType = true;
+        else
+            $ordenType = false;
+            
+        $juegosOrdenados = \core\Tools::ordenarArray( $data, $field, $ordenType);
         
-        \core\Tools::ordenarArray( $datos['filas'], $post['campo'], $datos['orden']);
-
-        if( isset($post['filas'])){
-            $datos['filas'] = unserialize($post['filas']);
-            //var_dump($datos);
-          
-            $datos['orden'] = isset($post['orden']) && $post['orden'] == 'asc' ? false : true;
-            if( isset($post['campo']) ){
-                \core\Tools::ordenarArray( $datos['filas'], $post['campo'], $datos['orden']);
-            }
-        }
-
-        if( is_null($datos) ){
-            $this->index();
+        if($is_ajax){
+            //echo $juegosOrdenados;
+            echo json_encode($juegosOrdenados);
+            //echo json_encode($datos);
         }else{
-            $this->index($datos);
+            
         }
 
     }

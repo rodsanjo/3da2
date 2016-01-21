@@ -29,7 +29,7 @@ class articulos extends \core\sgbd\bd {
         self::$juegos = $basic_games;
     }
     
-    public static function getJuegos(){
+    public function getJuegos(){
         return self::$juegos;
     }
     
