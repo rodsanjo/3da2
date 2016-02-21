@@ -13,18 +13,7 @@
                 include PATH_APPLICATION_APP."vistas/zonas/titulo_cabecera.php";
                 ?>
             </div>
-            
-            
-            
         </div>
-        
-        <div id="idioma">
-            <?php 
-                include PATH_APPLICATION_APP."vistas/zonas/idiomas.php";
-            ?>
-        </div>
-
-        <hr/>
     </section>
     <section class="container-fluid">
         <div id="sidebar_left" class="col-md-2">
@@ -41,13 +30,6 @@
 //                    include PATH_APPLICATION_APP."vistas/zonas/cuadro_login.php";
                 ?>  
             </div>-->
-
-            <div id="opciones">
-                <?php
-                    include PATH_APPLICATION_APP."vistas/zonas/opciones.php";
-                ?>  
-            </div>
-     
         </div>
         
         <div id="sidebar_right">
@@ -63,6 +45,11 @@
         
     </section>
     <section id="pie" class="container-fluid">
+        <div id="enlaces_down">
+            <a href="<?php echo URL_ROOT ?>" title="3da2">HOME</a>
+            &nbsp;|&nbsp;
+            <a href="<?php echo URL_ROOT ?>sitemap.html" title="Mapa Web">MAPA WEB</a>
+        </div>
         <div>
             <?php 
                 include PATH_HOME."app/vistas/zonas/pie.php";
@@ -96,15 +83,15 @@ heredoc;
     <div id='globals'>
         <?php
             //var_dump($datos);
-            print "<pre>";
-                print_r($GLOBALS);
+//            print "<pre>";
+//                print_r($GLOBALS);
 //                print("\$_GET "); print_r($_GET);
 //                print("\$_POST ");print_r($_POST);
 //                print("\$_COOKIE ");print_r($_COOKIE);
 //                print("\$_REQUEST ");print_r($_REQUEST);
 //    		print("\$_SESSION ");print_r($_SESSION);
 //                print("\$_SERVER ");print_r($_SERVER);
-            print "</pre>";
+//            print "</pre>";
 //            print("xdebug_get_code_coverage() ");
 //            var_dump(xdebug_get_code_coverage());
         ?>

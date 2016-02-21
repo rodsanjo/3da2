@@ -95,14 +95,25 @@ function ordenarPor(campo){
     }
     console.log(ordenType);
     
+    $.ajax({
+        method: 'POST'
+        ,url: host+name_app+'/articulos/ordenarByAjax'
+        ,data:{rows: rows, field: campo, ordenType: ordenType}
+        ,dataType: 'json'
+    })
+    
+    .done(function( data ){
+        rows = data;
+        setArticulos();
+    })
+    
     jQuery.post(
         host+name_app+'/articulos/ordenarByAjax'
+        //host+name_app+'/articulos/ordenarByAjax2'
         ,{rows: rows, field: campo, ordenType: ordenType, is_ajax: "true"}
         ,function(data, textStatus, jqXHR) {
-            //$('#articulos').html( data );
-            //rows = json_encode(data);
             rows = data
-            setArticulos(rows);
+            setArticulos();
         }
     );
 }

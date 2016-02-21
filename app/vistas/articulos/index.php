@@ -27,8 +27,8 @@ $rows = json_encode($datos['filas']);
         ?>
         <form name="formOrdenar" method='post' action='<?php echo \core\URL::generar("articulos/ordenar"); ?>'>
             <p>Ordenar por:
-                <select id='ordenar_por' name="campo" onchange="ordenarPor(this.value);">
-                <!--<select id='ordenar_por' name="campo">-->
+                <!--<select id='ordenar_por' name="campo" onchange="ordenarPor(this.value);">-->
+                <select id='ordenar_por' name="campo">
                     <option value='nombre' ><?php echo iText('Nombre', 'dicc'); ?></option>
                     <option value='precio' ><?php echo iText('Precio', 'dicc'); ?></option>
                     <option value='num_min_jug' ><?php echo iText('nº jugadores min', 'frases'); ?></option>
@@ -152,54 +152,3 @@ $rows = json_encode($datos['filas']);
     <?php
     }
     ?>
-    <div>
-    <?php
-//    $categoria = isset($_REQUEST['categoria'])?$_REQUEST['categoria']:'seccion';
-    $categoria = isset($_REQUEST['p3'])?$_REQUEST['p3']:'seccion'; //'seccion' no vale para nada, solo para que p3 no quede vacio a la vista del usuario
-    $categoria = isset($_REQUEST['p2']) && $_REQUEST['p2'] == 'busqueda' ? 'busqueda': $categoria;
-    
-    $num_grupo = isset($_REQUEST['p4'])?$_REQUEST['p4']:'';
-    
-//    $order_by = isset($_REQUEST['ordenar_por'])?$_REQUEST['ordenar_por']:'';
-//    $order_by = isset($_REQUEST['p5'])?$_REQUEST['p5']:$order_by;
-    
-    //$num_total_juegos = $datos["paginacion"]["num_total_juegos"][0]['num_total_juegos'];
-    $num_total_juegos = $datos["paginacion"]["num_total_juegos"];
-    $ult_grupo = floor($num_total_juegos/\controladores\articulos::$num_arts_por_pag);
-    //var_dump($num_total_juegos);
-    if($ult_grupo > 1 && $num_total_juegos%\controladores\articulos::$num_arts_por_pag == 0){    //Evito el cero por indeterminación y el 1 por ser primo
-        $ult_grupo--; 
-    }elseif($ult_grupo == 1 && $num_total_juegos == \controladores\articulos::$num_arts_por_pag){    //Evita el 1
-        $ult_grupo = 0;
-    }
-    
-    $grupo_ant = $num_grupo-1;
-    if($grupo_ant < 0) $grupo_ant = 0;
-    $grupo_sig = $num_grupo+1;
-    if($grupo_sig > $ult_grupo) $grupo_sig = $ult_grupo;
-    
-    $href1 = \core\URL::generar(array('articulos','index',$categoria));
-    $href2 = \core\URL::generar(array('articulos','index',$categoria,$grupo_ant));
-    $href3 = \core\URL::generar(array('articulos','index',$categoria,$grupo_sig));
-    $href4 = \core\URL::generar(array('articulos','index',$categoria,$ult_grupo));
-    ?>
-    <br/>
-    
-    </div>
-    
-    <div class="flechas_cambio_pagina">
-    <?php
-        if( ! isset($_POST['ordenar_por'])){
-    ?>
-        <a class='boton_flecha_izq' href='<?php echo $href1 ?>' title="primero">   <<   </a>
-        <a class='boton_flecha_izq' href='<?php echo $href2 ?>' title="anterior">  <  </a>
-        <?php echo iText('Artículos', 'dicc'); ?>
-        <a class='boton_flecha_der' href='<?php echo $href3 ?>' title="siguiente">  >  </a>
-        <a class='boton_flecha_der' href='<?php echo $href4 ?>' title="último">   >>   </a>
-
-        <div title="total"><small>Total: <?php echo $num_total_juegos; ?></small></div>
-    <?php } ?>
-        <br/>
-        <a class='boton' style="text-align: right;" href='#titulo_seccion' ><?php echo iText('Subir', 'dicc'); ?></a><br/>
-    </div>
-</div>

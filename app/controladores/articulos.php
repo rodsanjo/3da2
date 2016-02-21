@@ -378,7 +378,7 @@ class articulos extends \core\Controlador{
             //"articulo_nombre" =>"errores_requerido && errores_texto && errores_unicidad_modificar:id,articulo_nombre/articulos/id,articulo_nombre"
             ,"usuario_login" => "errores_requerido && errores_texto"
             ,"comentario" => "errores_requerido && errores_texto"
-        );                                
+        );                              
 
         if ( ! $validacion = ! \core\Validaciones::errores_validacion_request($validaciones, $datos)){  //validaciones en PHP
             $datos["errores"]["errores_validacion"]="Corrija los errores, por favor.";
@@ -413,6 +413,50 @@ class articulos extends \core\Controlador{
         }
     }
     
+    public function hacer_visible_comentario(){
+        self::request_come_by_post();   //Si viene por POST sigue adelante
+        
+        $validaciones = array(
+            "id" =>"errores_requerido && errores_texto && errores_numero_entero_positivo && errores_referencia:id/".self::$tabla2."/id"
+            //"articulo_nombre" =>"errores_requerido && errores_texto && errores_unicidad_modificar:id,articulo_nombre/articulos/id,articulo_nombre"
+            ,"usuario_login" => "errores_requerido && errores_texto"
+            ,"comentario" => "errores_requerido && errores_texto"
+        );
+        
+        if ( ! $validacion = ! \core\Validaciones::errores_validacion_request($validaciones, $datos)){  //validaciones en PHP
+            $datos["errores"]["errores_validacion"]="Corrija los errores, por favor.";
+        }else{
+            //Cogemos el nombre del articulo antes de borrarlo, para luego poder mostrar la misma página
+            $where = ' id = '.$datos['values']['id'];
+            $sql = 'update '.\core\Modelo_SQL::get_prefix_tabla(self::$tabla2).' set visible = true where '.$where;
+            $fila = \core\Modelo_SQL::execute($sql);          
+            $articulo_id = $fila[0]['articulo_id'];
+
+            if ( ! $validacion = \modelos\Modelo_SQL::delete($datos["values"], self::$tabla2)) // Devuelve true o false
+                $datos["errores"]["errores_validacion"]="No se han podido grabar los datos en la bd.";
+        }
+        if ( ! $validacion){ //Devolvemos el formulario para que lo intente corregir de nuevo
+            \core\Distribuidor::cargar_controlador(self::$controlador, 'editar_comentario', $datos);
+        }else{
+            // Se ha grabado la modificación. Devolvemos el control al la situacion anterior a la petición del form_modificar
+            //$datos = array("alerta" => "Se han grabado correctamente los detalles");
+            // Definir el controlador que responderá después de la inserción
+            //\core\Distribuidor::cargar_controlador(self::$tabla, 'index', $datos);
+            $_SESSION["alerta"] = "El comentario ha sido eliminado";
+            //header("Location: ".\core\URL::generar("self::$controlador/index"));
+            $articulo_nombre = str_replace(" ", "-",$datos['values']['articulo_nombre']);
+            
+            $clausulas['where'] = " id = $articulo_id ";
+            $filas = \modelos\Datos_SQL::select( $clausulas, self::$tabla);
+            $articulo_nombre = $filas[0]['nombre'];
+            $articulo_nombre = str_replace(" ", "-",$articulo_nombre);
+            
+            \core\HTTP_Respuesta::set_header_line("location", \core\URL::generar(self::$controlador."/juego/".$articulo_id."/".$articulo_nombre));
+            \core\HTTP_Respuesta::enviar();
+        }
+    }
+
+
     /**
      * Presenta un formulario para insertar nuevas filas a la tabla
      * @param array $datos
@@ -1033,22 +1077,36 @@ class articulos extends \core\Controlador{
 
     }
     
-    public function ordenarByAjax( $datos , $field = 'precio', $ordenType = 'asc', $is_ajax='true'){
-        $data = json_decode($datos, true);
+    public function ordenarByAjax(array $datos = array()){
+        $post = \core\HTTP_Requerimiento::post();
+        $datos['filas'] = json_decode($post['rows'], true);
+        
+        if($post['ordenType'] == 'asc')
+            $ordenType = true;
+        else
+            $ordenType = false;
+            
+        $juegosOrdenados = \core\Tools::ordenarArray( $datos['filas'], $post['field'], $ordenType);
+        echo json_encode($juegosOrdenados);
+        
+        //echo json_encode($datos['filas']);
+    }
+    
+    public function ordenarByAjax2( array $datos = array(), $field = 'precio', $ordenType = 'asc'){
+        
+        $object = new \modelos\articulos();
+        $datos['filas'] = $object->getJuegos();
+        
         if($ordenType == 'asc')
             $ordenType = true;
         else
             $ordenType = false;
             
-        $juegosOrdenados = \core\Tools::ordenarArray( $data, $field, $ordenType);
+        //$juegosOrdenados = \core\Tools::ordenarArray( $datos['filas'], $field, $ordenType);
         
-        if($is_ajax){
-            //echo $juegosOrdenados;
-            echo json_encode($juegosOrdenados);
-            //echo json_encode($datos);
-        }else{
-            
-        }
+        //echo $juegosOrdenados;
+        //echo json_encode($juegosOrdenados);
+        echo json_encode($datos['filas']);
 
     }
 	

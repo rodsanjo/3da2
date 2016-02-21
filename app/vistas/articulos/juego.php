@@ -84,25 +84,37 @@
                 echo "<center>".iText('sinComentarios', 'frases')."</center>";
             }
             $ahora = date("Y-m-d H:i:s");   // 2001-03-10 17:16:18 (el formato DATETIME de MySQL)
-            foreach ($array as $key => $comentario) {    
-                //print_r(strtotime($ahora).'<br/>');   //strtotime() pasa la fecha a seg
-                if ( \core\Usuario::$login == $comentario['usuario_login'] && strtotime($comentario['fecha_ult_edicion']) > strtotime($ahora) - (60* \core\Configuracion::$minutos_edicion_comentario ) ){ //Permitimos editar el comentario si es del usuario y han transcurrido menos de x minutos desde la ultima edición
-                    $editar_comentario = \core\HTML_Tag::a_boton_onclick("boton", array("articulos", "form_editar_comentario", $comentario['id']), iText('Editar', 'dicc') );
-                }else{
-                    $editar_comentario = "";
+            foreach ($array as $key => $comentario) {
+                if($comentario['visible'] || \core\Usuario::tiene_permiso('articulos', 'hacer_visible_comentario') ){
+                    //print_r(strtotime($ahora).'<br/>');   //strtotime() pasa la fecha a seg
+                    if ( \core\Usuario::$login == $comentario['usuario_login'] && strtotime($comentario['fecha_ult_edicion']) > strtotime($ahora) - (60* \core\Configuracion::$minutos_edicion_comentario ) ){ //Permitimos editar el comentario si es del usuario y han transcurrido menos de x minutos desde la ultima edición
+                        $editar_comentario = \core\HTML_Tag::a_boton_onclick("boton", array("articulos", "form_editar_comentario", $comentario['id']), 'Editar' );
+                    }else{
+                        $editar_comentario = "";
+                    }
+                    if( \core\Usuario::tiene_permiso('articulos', 'form_eliminar_comentario')){
+                        $eliminar_comentario = \core\HTML_Tag::a_boton_onclick("boton", array("articulos", "form_eliminar_comentario", $comentario['id']), 'Eliminar' );
+                    }else{
+                        $eliminar_comentario = "";
+                    }
+                    if( !$comentario['visible']){
+                        $style_not_visible = "style='background-color: lightpink;'";
+                        if( \core\Usuario::tiene_permiso('articulos', 'hacer_visible_comentario')){
+                            $hacer_visible_comentario = \core\HTML_Tag::a_boton_onclick("boton", array("articulos", "hacer_visible_comentario", $comentario['id']), 'Hacer visible' );
+                        }else{
+                            $hacer_visible_comentario = "";
+                        }
+                    }else{
+                        $style_not_visible = '';
+                    }
+                    $edicion = ($comentario['num_ediciones'] > 0 ) ? '<small>'.iText('Editado', 'dicc').' '.$comentario['num_ediciones'].' '.iText('veces', 'dicc').'.</small>' : "" ;
+                    echo "<div $style_not_visible>
+                            <div class='acciones_comentario'>$editar_comentario $eliminar_comentario</div>
+                            ".iText('fecha', 'dicc').": ".$comentario['fecha_comentario'].'  '.$edicion."<br/>
+                            <b>".$comentario['usuario_login']."</b> ".iText('escribió', 'dicc').":
+                        </div>";
+                    echo "<div id='texto_comentario'>{$comentario['comentario']}</div><br/>";
                 }
-                if( \core\Usuario::tiene_permiso('articulos', 'form_eliminar_comentario')){
-                    $eliminar_comentario = \core\HTML_Tag::a_boton_onclick("boton", array("articulos", "form_eliminar_comentario", $comentario['id']), iText('Eliminar', 'dicc') );
-                }else{
-                    $eliminar_comentario = "";
-                }
-                $edicion = ($comentario['num_ediciones'] > 0 ) ? '<small>'.iText('Editado', 'dicc').' '.$comentario['num_ediciones'].' '.iText('veces', 'dicc').'.</small>' : "" ;
-                echo "<div>
-                        <div class='acciones_comentario'>$editar_comentario $eliminar_comentario</div>
-                        ".iText('fecha', 'dicc').": ".$comentario['fecha_comentario'].'  '.$edicion."<br/>
-                        <b>".$comentario['usuario_login']."</b> ".iText('escribió', 'dicc').":
-                    </div>";
-                echo "<div id='texto_comentario'>{$comentario['comentario']}</div><br/>";
             }
     echo "</div>";
     ?>

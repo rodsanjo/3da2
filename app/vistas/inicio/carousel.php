@@ -4,15 +4,21 @@
     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
   </ol>
-  <div class="carousel-inner">
+  <div class="carousel-inner" style="height: 250px;">
     <div class="item active">
+      <center>
       <img src="<?php echo URL_ROOT ?>recursos/imagenes/carousel/losColonosDeCatan.jpg" alt="First slide">
+      </center>
     </div>
     <div class="item">
-      <img src="<?php echo URL_ROOT ?>recursos/imagenes/carousel/spartacus.jpg" alt="Second slide">
+        <center>
+        <img src="<?php echo URL_ROOT ?>recursos/imagenes/carousel/spartacus.jpg" alt="Second slide">
+        </center>
     </div>
     <div class="item">
-      <img src="<?php echo URL_ROOT ?>recursos/imagenes/carousel/casaCertificacionEnergetica.png" alt="Third slide">
+        <center>
+        <img src="<?php echo URL_ROOT ?>recursos/imagenes/carousel/casaCertificacionEnergetica.png" alt="Third slide">
+        </center>
     </div>
   </div>
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">

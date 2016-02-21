@@ -1,10 +1,10 @@
-<div>
+<!--<div>
     <form class="form_buscar" method='post' action='<?php echo \core\URL::generar("articulos/busqueda"); ?>' onsubmit='return(document.getElementById("buscar_nombre").value.length>0);'>
         <input type='text' style="float:left;width: 65%;" id='buscar_nombre' name='buscar_nombre' title='Introduzca el nombre o parte del nombre del artículo a buscar'/>        
         <input type='submit' value='<?php echo iText('Buscar', 'dicc'); ?>' title='<?php echo iText('Buscar', 'dicc'); ?>'/>
     </form>
 </div>
-<hr/>
+<hr/>-->
 <div>
     <?php
     //Formulario de bscar
