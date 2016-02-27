@@ -17,7 +17,7 @@
     </div>
     <div class="item">
         <center>
-        <img src="<?php echo URL_ROOT ?>recursos/imagenes/carousel/casaCertificacionEnergetica.png" alt="Third slide">
+        <img src="<?php echo URL_ROOT ?>recursos/imagenes/carousel/formulaDe.jpg" alt="Third slide">
         </center>
     </div>
   </div>

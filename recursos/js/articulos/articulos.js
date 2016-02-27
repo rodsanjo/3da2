@@ -1,5 +1,5 @@
 host = ''; //Host
-host = '/web/jergapps'; //'http://localhost/web/jergapps';
+//host = '/web/jergapps'; //'http://localhost/web/jergapps';
 name_app = '/3da2'
 
 //alert(rows);

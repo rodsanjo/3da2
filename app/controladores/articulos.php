@@ -301,7 +301,7 @@ class articulos extends \core\Controlador{
                 $datos["errores"]["errores_validacion"]="No se han podido grabar los datos en la bd.";
         }
         if ( ! $validacion){ //Devolvemos el formulario para que lo intente corregir de nuevo
-            \core\Distribuidor::cargar_controlador(self::$controlador, 'editar_comentario', $datos);
+            \core\Distribuidor::cargar_controlador(self::$controlador, 'form_editar_comentario', $datos);
         }else{
             // Se ha grabado la modificación. Devolvemos el control al la situacion anterior a la petición del form_modificar
             //$datos = array("alerta" => "Se han grabado correctamente los detalles");
@@ -393,7 +393,7 @@ class articulos extends \core\Controlador{
                 $datos["errores"]["errores_validacion"]="No se han podido grabar los datos en la bd.";
         }
         if ( ! $validacion){ //Devolvemos el formulario para que lo intente corregir de nuevo
-            \core\Distribuidor::cargar_controlador(self::$controlador, 'editar_comentario', $datos);
+            \core\Distribuidor::cargar_controlador(self::$controlador, 'form_editar_comentario', $datos);
         }else{
             // Se ha grabado la modificación. Devolvemos el control al la situacion anterior a la petición del form_modificar
             //$datos = array("alerta" => "Se han grabado correctamente los detalles");
@@ -413,46 +413,56 @@ class articulos extends \core\Controlador{
         }
     }
     
-    public function hacer_visible_comentario(){
-        self::request_come_by_post();   //Si viene por POST sigue adelante
+    public function hacer_visible_comentario(array $datos=array()){
         
-        $validaciones = array(
-            "id" =>"errores_requerido && errores_texto && errores_numero_entero_positivo && errores_referencia:id/".self::$tabla2."/id"
-            //"articulo_nombre" =>"errores_requerido && errores_texto && errores_unicidad_modificar:id,articulo_nombre/articulos/id,articulo_nombre"
-            ,"usuario_login" => "errores_requerido && errores_texto"
-            ,"comentario" => "errores_requerido && errores_texto"
-        );
-        
-        if ( ! $validacion = ! \core\Validaciones::errores_validacion_request($validaciones, $datos)){  //validaciones en PHP
-            $datos["errores"]["errores_validacion"]="Corrija los errores, por favor.";
-        }else{
-            //Cogemos el nombre del articulo antes de borrarlo, para luego poder mostrar la misma página
-            $where = ' id = '.$datos['values']['id'];
-            $sql = 'update '.\core\Modelo_SQL::get_prefix_tabla(self::$tabla2).' set visible = true where '.$where;
-            $fila = \core\Modelo_SQL::execute($sql);          
-            $articulo_id = $fila[0]['articulo_id'];
+        $datos["form_name"] = __FUNCTION__;
 
-            if ( ! $validacion = \modelos\Modelo_SQL::delete($datos["values"], self::$tabla2)) // Devuelve true o false
-                $datos["errores"]["errores_validacion"]="No se han podido grabar los datos en la bd.";
-        }
-        if ( ! $validacion){ //Devolvemos el formulario para que lo intente corregir de nuevo
-            \core\Distribuidor::cargar_controlador(self::$controlador, 'editar_comentario', $datos);
+        self::request_come_by_post();   //Si viene por POST sigue adelante
+
+        $validaciones=array(
+            "id" => "errores_requerido && errores_numero_entero_positivo && errores_referencia:id/".self::$tabla2."/id"
+        );
+        if ( ! $validacion = ! \core\Validaciones::errores_validacion_request($validaciones, $datos)) {
+            $datos['mensaje'] = 'Datos erróneos para identificar el elemento a actualizar';
+            \core\Distribuidor::cargar_controlador('mensajes', 'mensaje', $datos);
+            return;
         }else{
-            // Se ha grabado la modificación. Devolvemos el control al la situacion anterior a la petición del form_modificar
-            //$datos = array("alerta" => "Se han grabado correctamente los detalles");
-            // Definir el controlador que responderá después de la inserción
-            //\core\Distribuidor::cargar_controlador(self::$tabla, 'index', $datos);
-            $_SESSION["alerta"] = "El comentario ha sido eliminado";
-            //header("Location: ".\core\URL::generar("self::$controlador/index"));
-            $articulo_nombre = str_replace(" ", "-",$datos['values']['articulo_nombre']);
-            
-            $clausulas['where'] = " id = $articulo_id ";
-            $filas = \modelos\Datos_SQL::select( $clausulas, self::$tabla);
-            $articulo_nombre = $filas[0]['nombre'];
-            $articulo_nombre = str_replace(" ", "-",$articulo_nombre);
-            
-            \core\HTTP_Respuesta::set_header_line("location", \core\URL::generar(self::$controlador."/juego/".$articulo_id."/".$articulo_nombre));
-            \core\HTTP_Respuesta::enviar();
+            $clausulas['where'] = " id = {$datos['values']['id']} ";
+            if ( ! $filas = \modelos\Datos_SQL::select( $clausulas, self::$tabla2)) {
+                $datos['mensaje'] = 'Error al recuperar la fila de la base de datos';
+                \core\Distribuidor::cargar_controlador('mensajes', 'mensaje', $datos);
+                return;
+            }else{
+                if(count($filas) == 1){
+                    $articulo_id = $filas[0]['articulo_id'];
+                    $update_params = array(
+                        'id' => $datos['values']['id']
+                        ,'visible' => true
+                    );
+                    if ( ! $validacion = \modelos\Modelo_SQL::update($update_params, self::$tabla2)){ // Devuelve true o false
+                        $datos["errores"]["errores_validacion"]="No se han podido grabar los datos en la bd.";
+                        \core\Distribuidor::cargar_controlador('mensajes', 'mensaje', $datos);
+                        return;
+                    }else{
+                        $_SESSION["alerta"] = "El comentario ha sido aceptado para su publicación";
+                        //header("Location: ".\core\URL::generar("self::$controlador/index"));
+                        $articulo_nombre = str_replace(" ", "-",$datos['values']['articulo_nombre']);
+
+                        $clausulas['where'] = " id = $articulo_id ";
+                        $filas = \modelos\Datos_SQL::select( $clausulas, self::$tabla);
+                        $articulo_nombre = $filas[0]['nombre'];
+                        $articulo_nombre = str_replace(" ", "-",$articulo_nombre);
+
+                        \core\HTTP_Respuesta::set_header_line("location", \core\URL::generar(self::$controlador."/juego/".$articulo_id."/".$articulo_nombre));
+                        \core\HTTP_Respuesta::enviar();
+                        $datos['values'] = $filas[0];
+                    }
+                }else{
+                    $datos["errores"]["errores_validacion"]="Más de un artículo identificado.";
+                    \core\Distribuidor::cargar_controlador('mensajes', 'mensaje', $datos);
+                    return;
+                }
+            }
         }
     }
 
@@ -594,7 +604,7 @@ class articulos extends \core\Controlador{
                 $datos['values']['basic_game'] = ! (boolean)$datos['values']['expansion'];
                 unlink($datos['values']['expansion']);
             }
-            var_dump($datos['values']);
+            //var_dump($datos['values']);
             $validacion = self::comprobar_files($datos);
             if ($validacion) {
                 //Convertimos a formato MySQL
@@ -736,8 +746,8 @@ class articulos extends \core\Controlador{
             elseif ( ! preg_match("/pdf/", $_FILES["manual"]["type"])) {
                 $datos["errores"]["manual"] = "El fichero no es un pdf.";
             }
-            elseif ($_FILES["manual"]["size"] > 1024*1024*3) {
-                $datos["errores"]["manual"] = "El tamaño del archivo no puede superar 3MB.";
+            elseif ($_FILES["manual"]["size"] > 1024*1024*4) {
+                $datos["errores"]["manual"] = "El tamaño del archivo no puede superar 4MB.";
             }
             if (isset($datos["errores"]["manual"])) {
                 $validacion = false;

@@ -7,9 +7,13 @@
 */
 
 /* articulos/juego */
-#datos_articulo{
+#datos_tecnicos, #datos_edicion{
     color: green;
 }
+#datos_descripcion{
+    clear: both;
+}
+
 #media_articulo {
     width: 210px;
     padding: 5px;
@@ -62,12 +66,9 @@
     background: gainsboro;
     border-radius: 10px;
     margin-bottom: 8px;
+    font-size: 18px;
 }
-/*
-div.juego_index + div.juego_index{
-    margin-left: 4%;    /* 48+4+48 = 100% */
-}
-*/
+
 .flechas_cambio_pagina{
     clear: both;
     text-align: center;
@@ -108,7 +109,8 @@ div.juego_index + div.juego_index{
     padding-left: 5px;
 }
 .img_index{
-    width: 150px;
+    width: 200px;
+    max-height: 130px;
     float: left;
     padding-right: 50px;
 }
@@ -135,4 +137,5 @@ div.juego_index + div.juego_index{
 }
 .acciones_comentario{
     float: right;
+}
 

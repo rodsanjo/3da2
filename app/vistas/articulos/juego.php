@@ -52,7 +52,7 @@
                     <p><i>Autor:</i> {$fila['autor']}</p>
                     <p><i>Editorial:</i> \"{$fila['editorial']}\"</p>
                 </div>
-                <p>$descripcion</p>
+                <div id='datos_descripcion'><p>$descripcion</p></div>
             </div>
     ";
 
@@ -97,23 +97,24 @@
                     }else{
                         $eliminar_comentario = "";
                     }
+                    
+                    $hacer_visible_comentario = '';
+                    $style_not_visible = '';
                     if( !$comentario['visible']){
                         $style_not_visible = "style='background-color: lightpink;'";
                         if( \core\Usuario::tiene_permiso('articulos', 'hacer_visible_comentario')){
                             $hacer_visible_comentario = \core\HTML_Tag::a_boton_onclick("boton", array("articulos", "hacer_visible_comentario", $comentario['id']), 'Hacer visible' );
-                        }else{
-                            $hacer_visible_comentario = "";
+                            //$hacer_visible_comentario = \core\HTML_Tag::a_boton("boton", array("articulos", "hacer_visible_comentario", $comentario['id']), 'Hacer visible' );
                         }
-                    }else{
-                        $style_not_visible = '';
                     }
+                    
                     $edicion = ($comentario['num_ediciones'] > 0 ) ? '<small>'.iText('Editado', 'dicc').' '.$comentario['num_ediciones'].' '.iText('veces', 'dicc').'.</small>' : "" ;
-                    echo "<div $style_not_visible>
-                            <div class='acciones_comentario'>$editar_comentario $eliminar_comentario</div>
+                    echo "<div>
+                            <div class='acciones_comentario'>$editar_comentario $hacer_visible_comentario $eliminar_comentario</div>
                             ".iText('fecha', 'dicc').": ".$comentario['fecha_comentario'].'  '.$edicion."<br/>
                             <b>".$comentario['usuario_login']."</b> ".iText('escribió', 'dicc').":
                         </div>";
-                    echo "<div id='texto_comentario'>{$comentario['comentario']}</div><br/>";
+                    echo "<div id='texto_comentario' $style_not_visible>{$comentario['comentario']}</div><br/>";
                 }
             }
     echo "</div>";
