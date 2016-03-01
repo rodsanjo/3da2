@@ -45,12 +45,13 @@ function setArticulos(){
             }
             rangoJug = row['num_min_jug']+num_max_jug;
 
-            html = "<div class='juego_index col-md-4'>";
+            html = "<div class='juego_index col-md-4 col-sm-6'>";
             html += "<a href='"+href+"' title='"+row['nombre']+
                 "'><h3 class='titulo_art'>"+row['nombre']+"</h3></a><a href='"+href+
                 "' class='media_articulo'>"+img+"</a><div class='datos_articulo'>";
-            html += "<p>Precio:<br/><b class='precio'>"+row['precio']+"€</b></p>";
-            html += "<p>Jugadores:<br/>"+rangoJug+"</p>";
+            html += "<p>Precio:<br/><span class='dato_art'>"+row['precio']+"€</span></p>";
+            html += "<p>Jugadores:<br/><span class='dato_art'>"+rangoJug+"</span></p>";
+            html += "<p>Editorial:<br/><span class='dato_art'>"+row['editorial']+"</span></p>";
             html += "</div><div class='masDetalles'><a class='masDetalles' title='Leer reseña'>Más detalles</a>";
             html += "<p class='resenha'>"+resenha+"</b></p></div>";
 

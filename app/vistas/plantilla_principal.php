@@ -22,9 +22,12 @@
                 <?php 
                     include PATH_APPLICATION_APP."vistas/zonas/menu_left.php";
                 ?>
-                <?php echo \core\HTML_Tag::li_menu("menu_adm", array("usuarios"), "Usuarios"); ?>
-                <?php echo \core\HTML_Tag::li_menu("menu_adm", array("roles"), "Roles"); ?>
             </div>
+            <div style="clear:both:">
+                    <?php echo \core\HTML_Tag::li_menu("menu_adm", array("usuarios"), "Usuarios"); ?>
+                    <?php echo \core\HTML_Tag::li_menu("menu_adm", array("roles"), "Roles"); ?>
+            </div>
+            
 <!--            <div id="cuadro_login">
                 <?php 
 //                    include PATH_APPLICATION_APP."vistas/zonas/cuadro_login.php";

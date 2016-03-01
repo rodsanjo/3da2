@@ -33,6 +33,7 @@ $rows = json_encode($datos['filas']);
                     <option value='precio' ><?php echo iText('Precio', 'dicc'); ?></option>
                     <option value='num_min_jug' ><?php echo iText('nº jugadores min', 'frases'); ?></option>
                     <option value='num_max_jug' ><?php echo iText('nº jugadores max', 'frases'); ?></option>
+                    <option value='editorial'>Editorial</option>
                     <option value='propietario' >Propietario</option>
                     <option value='anho'>Antigüedad</option>
                 </select>

@@ -15,7 +15,7 @@
 }
 
 #media_articulo {
-    width: 210px;
+    width: 30%;
     padding: 5px;
     margin-bottom: 10px;
     background: rgba(200,200,15,1);
@@ -110,7 +110,7 @@
 }
 .img_index{
     width: 200px;
-    max-height: 130px;
+    max-height: 250px;
     float: left;
     padding-right: 50px;
 }
