@@ -31,6 +31,8 @@ function setArticulos(){
             //console.log( img);
 
             href = url_root+"articulos/juego/"+row['id']+"/"+articulo_nombre;
+            //href = url_root+"juego/index/"+articulo_nombre;
+            
             if( row['resenha'] != null && row['resenha'].length > 0 ){
                 resenha = row['resenha'];
             }else{
@@ -45,7 +47,7 @@ function setArticulos(){
             }
             rangoJug = row['num_min_jug']+num_max_jug;
 
-            html = "<div class='juego_index col-md-4 col-sm-6'>";
+            html = "<div class='juego_index col-lg-3 col-md-4 col-sm-6'>";
             html += "<a href='"+href+"' title='"+row['nombre']+
                 "'><h3 class='titulo_art'>"+row['nombre']+"</h3></a><a href='"+href+
                 "' class='media_articulo'>"+img+"</a><div class='datos_articulo'>";

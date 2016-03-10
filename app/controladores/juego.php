@@ -15,12 +15,12 @@ class juego extends \core\Controlador{
     public function index(array $datos=array()) {
         
         if(isset($_GET['p3'])){
-            //$articulo_nombre = str_replace("-", " ", $_GET['p4']);
+            $articulo_nombre = str_replace("-", " ", $_GET['p4']);
             //$articulo_nombre = mysql_escape_string($articulo_nombre);
             //printf("Escaped string: %s\n", $articulo_nombre);
-            //print $articulo_nombre;
-            //$clausulas['where'] = " nombre like '%$articulo_nombre%' ";
-            $clausulas['where'] = " id like '%{$_GET['p3']}%' ";
+            print $articulo_nombre;
+            $clausulas['where'] = " nombre like '%$articulo_nombre%' ";
+            //$clausulas['where'] = " id = {$_GET['p3']} ";
         }
         if ( ! $filas = \modelos\Datos_SQL::select( $clausulas, self::$tabla)) {
             $datos['mensaje'] = 'El articulo seleccionado no se encuentra en nuestro catálogo de productos';
@@ -31,7 +31,7 @@ class juego extends \core\Controlador{
             
             //Usando articulo_id como FK
             $articulo_id = $filas[0]['id'];
-            $clausulas['where'] = " articulo_id like '%$articulo_id%' ";
+            $clausulas['where'] = " articulo_id = $articulo_id ";
             $clausulas['order_by'] = 'fecha_comentario desc';
             $datos["comentarios"] = \modelos\Modelo_SQL::table(self::$tabla2)->select($clausulas);
             

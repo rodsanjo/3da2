@@ -282,23 +282,6 @@ h2>i{
     margin-bottom: 10px;
 }
 
-#enlaces dl{
-   border: 1px black solid;
-   border-radius: 10px;
-   background: burlywood;
-   padding: 10px;
-}
-
-#enlaces dt{
-   border: 1px brown solid;
-   border-radius: 10px;
-   background: moccasin;
-   padding-left: 5px; 
-   overflow: visible;
-}
-#enlaces dd{
-   padding-top: 5px;
-}
 #descarga_manual{
     clear: both;
 }
@@ -308,9 +291,4 @@ h2>i{
     padding: 3px 6px;
     font-size: 12px;
     padding: 2px 6px;
-}
-
-#enlaces_down{
-    padding-top: 0px;
-    padding-bottom: 0px;
 }

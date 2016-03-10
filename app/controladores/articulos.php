@@ -126,7 +126,7 @@ class articulos extends \core\Controlador{
             //printf("Escaped string: %s\n", $articulo_nombre);
             //print $articulo_nombre;
             //$clausulas['where'] = " nombre like '%$articulo_nombre%' ";
-            $clausulas['where'] = " id like '%{$_GET['p3']}%' ";
+            $clausulas['where'] = " id = {$_GET['p3']} ";
         }
         if ( ! $filas = \modelos\Datos_SQL::select( $clausulas, self::$tabla)) {
             $datos['mensaje'] = 'El articulo seleccionado no se encuentra en nuestro catálogo de productos';
@@ -137,7 +137,7 @@ class articulos extends \core\Controlador{
             
             //Usando articulo_id como FK
             $articulo_id = $filas[0]['id'];
-            $clausulas['where'] = " articulo_id like '%$articulo_id%' ";
+            $clausulas['where'] = " articulo_id = $articulo_id ";
             $clausulas['order_by'] = 'fecha_comentario desc';
             $datos["comentarios"] = \modelos\Modelo_SQL::table(self::$tabla2)->select($clausulas);
             

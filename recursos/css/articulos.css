@@ -53,6 +53,9 @@
 }
 
 /* articulos/index */
+.juego_index{
+    height: 300px;
+}
 
 .juego_index:hover{
     background: khaki;
@@ -75,6 +78,7 @@
 }
 
 .resenha{
+    z-index: 10;
     display: none;
     padding: 15px;
     border-radius: 5px 40px;
@@ -110,7 +114,7 @@
 }
 .img_index{
     width: 200px;
-    max-height: 250px;
+    max-height: 200px;
     float: left;
     padding-right: 50px;
 }
