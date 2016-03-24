@@ -194,11 +194,11 @@
     </fieldset>
 </form>
 
-<script type="text/javascript" src="<?php echo URL_ROOT ?>recursos/js/validaciones.js"></script>
+<script type="text/javascript" src="<?php echo URL_ROOT ?>recursos/js/validaciones/validaciones.js"></script>
 
 <script type="text/javascript">
     var ok = false;
-    var f = <?php echo \core\Array_Datos::contenido("form_name", $datos); ?>
+    var f = <?php echo \core\Array_Datos::contenido("form_name", $datos); ?>;
     function validar_num_max_jug(){
         var num_max_jug = f.num_max_jug.value;
         var num_min_jug = f.num_min_jug.value;

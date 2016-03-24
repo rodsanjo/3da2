@@ -629,7 +629,7 @@ class articulos extends \core\Controlador{
         
         if ( ! $validacion) //Devolvemos el formulario para que lo intente corregir de nuevo
                 $this->cargar_controlador(self::$controlador, 'form_modificar',$datos);
-        else 		{
+        else{
                 $_SESSION["alerta"] = "Se han modificado correctamente los datos";
                 \core\HTTP_Respuesta::set_header_line("location", \core\URL::generar(\core\Distribuidor::get_controlador_instanciado()));
                 \core\HTTP_Respuesta::enviar();

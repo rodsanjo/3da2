@@ -131,3 +131,10 @@ for(i=0; i<ordenacion.length ;i++){
     document.getElementById("ordenar_por").appendChild(tipoOrden);
 }
 */
+
+//Debemos de ponerlo en funciones.js para que al cargar la página este la información
+/*
+$(document).ready(function(){ //Se activa cuando la pagina esta preparada
+    setArticulos();
+});
+*/

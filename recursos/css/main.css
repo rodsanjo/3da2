@@ -15,8 +15,11 @@ body{
 }
 #pie{
     background: rgba(200,200,15,0.5);
-    padding: 10px;
+    padding: 2px;
     margin-top: 10px;
+}
+#pie hr{
+    margin: 0px;
 }
 .boton {
     margin: 5px 5px;

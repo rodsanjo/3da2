@@ -4,8 +4,9 @@
     
     <?php
     echo \core\HTML_Tag::a_boton_onclick("boton", array("articulos", "form_modificar", $datos['articulo']['id']), "Modificar");
+    //echo \core\HTML_Tag::a_boton("boton", array("articulos", "form_modificar", $datos['articulo']['id']), "Modificar");
     $fila = $datos['articulo'];
-    $img = ($fila["foto"]) ? "<img src='".URL_ROOT."recursos/imagenes/articulos/".$fila["foto"]."' width='200px' style='float:left' />" :"";  
+    $img = ($fila["foto"]) ? "<img src='".URL_ROOT."recursos/imagenes/articulos/".$fila["foto"]."' width='200px' style='float:left' />" :"";
     $num_max_jug = isset($fila['num_max_jug'])?$fila['num_max_jug']:null;
     if(is_null($num_max_jug) || $num_max_jug == $fila['num_min_jug']){
         $num_max_jug ='';

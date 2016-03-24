@@ -59,7 +59,7 @@ class articulos extends \core\sgbd\bd {
         $table = \modelos\Modelo_SQL::get_prefix_tabla( self::$tabla_cat );
         $sql = "select id from $table where categoria like '%$categoria%'";
         $categorias = \modelos\Modelo_SQL::execute($sql);
-        
+
         if(!count($categorias)){
             $table = \modelos\Modelo_SQL::get_prefix_tabla( self::$tabla_req );
             $sql = "select id from $table where tipo like '%$categoria%'";
@@ -67,17 +67,16 @@ class articulos extends \core\sgbd\bd {
             if(!count($categorias)){
                 return;
             }
-            $clausulas['where'] .= " and requerimiento_id = {$categorias[0]['id']} "; //categoria extraida
-            $juegos = \modelos\Modelo_SQL::table(self::$tabla_j)->select($clausulas);
             
-            //Otros juegos secundarios
+            //Por número
             $num = (int)substr($categoria,0,1);
             if( $num == 0 ){
                 $num = 1;
             }
             
-            $clausulas['where'] .= "and num_min_jug <= $num "; //categoria extraida
-            $juegos['otros'] = \modelos\Modelo_SQL::table(self::$tabla_j)->select($clausulas);;
+            $clausulas['where'] .= " and ( requerimiento_id = {$categorias[0]['id']} or (num_min_jug <= $num and num_max_jug >= $num) )"; //categoria extraida
+            
+            $juegos = \modelos\Modelo_SQL::table(self::$tabla_j)->select($clausulas);
             
             return $juegos;
         }else{
