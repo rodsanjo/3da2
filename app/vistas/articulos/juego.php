@@ -109,7 +109,7 @@
                         }
                     }
                     
-                    $edicion = ($comentario['num_ediciones'] > 0 ) ? '<small>'.iText('Editado', 'dicc').' '.$comentario['num_ediciones'].' '.iText('veces', 'dicc').'.</small>' : "" ;
+                    $edicion = ($comentario['num_ediciones'] > 1 ) ? '<small>'.iText('Editado', 'dicc').' '.($comentario['num_ediciones']-1).' '.iText('veces', 'dicc').'.</small>' : "" ;
                     echo "<div>
                             <div class='acciones_comentario'>$editar_comentario $hacer_visible_comentario $eliminar_comentario</div>
                             ".iText('fecha', 'dicc').": ".$comentario['fecha_comentario'].'  '.$edicion."<br/>
