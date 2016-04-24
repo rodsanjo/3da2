@@ -5,9 +5,12 @@
     Description:
         Purpose of the stylesheet follows.
 */
+
+/*Menu superior feo*/
 #menu_up{
     margin-left: 0%;
     margin-right: 0%;
+    margin-bottom: 0%;
 }
 
 @font-face {
@@ -135,4 +138,48 @@
   -moz-box-shadow: inset 0 5px 10px #474915;
   -webkit-box-shadow: inset 0 5px 10px #474915;
   box-shadow: inset 0 5px 10px #474915;
+}
+
+/*Menu de pestañas*/
+#contenedor {
+    margin: 40px auto;
+    width: 750px;  /* Ancho del contenedor */
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+#contenedor input {
+    height: 32px;
+    visibility: hidden;
+}
+
+li div {
+    -Moz-transition: todos los  0,5 s facilidad 0 s;
+    -Webkit-transición: todos  0.5 s facilidad 0 s;
+    frontera: 1px  sólido  #888888;
+    float: a la izquierda;
+    Opacidad: 0 ;
+    padding: 0  15px ;
+    position: absolute;
+    Visibilidad: hidden ;
+    Ancho: 250px ;
+    izquierda : 0 ;
+}
+ 
+#Tabs li a {
+
+    frontera : 1px  sólido  #888888 ;
+    margen : 0  3px  0  0 ;
+    padding : 5px  25px ;
+    posición : relativa ;
+    z-index : 1 ;
+    font-size : 14px ;
+    border-radius: 10px  10px  0  0 ;
+    pantalla : bloque ;
+    top : 1px ;
+}
+ 
+#Uno:div objetivo, #Dos:div objetivo, #Tres:target div {
+    opacidad: 1 ;
+    Visibilidad : visible ;
 }

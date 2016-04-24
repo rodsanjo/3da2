@@ -198,12 +198,12 @@
 
 <script type="text/javascript">
     var ok = false;
-    var f = <?php echo \core\Array_Datos::contenido("form_name", $datos); ?>;
+    var form = <?php echo \core\Array_Datos::contenido("form_name", $datos); ?>;
     function validar_num_max_jug(){
-        var num_max_jug = f.num_max_jug.value;
-        var num_min_jug = f.num_min_jug.value;
-        alert(num_min_jug+" - "+num_max_jug);
-	var patron=/^\d{2}$/;
+        var num_max_jug = form.num_max_jug.value;
+        var num_min_jug = form.num_min_jug.value;
+        //alert(num_min_jug+" - "+num_max_jug);
+	var patron=/^\d{0,2}$/;
 	if(!patron.test(num_max_jug)){
             document.getElementById("error_num_max_jug").innerHTML="Debe escribir solo números";                
             ok = false;

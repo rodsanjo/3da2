@@ -40,6 +40,9 @@
         </div>
         
         <div id="view_content" class="col-md-10">
+            <div id="sendero_migas_pan">
+                <?php echo \controladores\sendero::ver(); ?>
+            </div>
             <?php
                 echo $datos['view_content'];
             ?>
@@ -57,6 +60,11 @@
             <?php 
                 include PATH_HOME."app/vistas/zonas/pie.php";
             ?>
+        </div>
+        <div id="conexion cuadro_login">
+            <?php 
+                include PATH_APPLICATION_APP."vistas/zonas/form_login.php";
+            ?>  
         </div>
     </section>
     

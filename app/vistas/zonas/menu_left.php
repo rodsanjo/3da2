@@ -57,7 +57,7 @@ if( \core\Distribuidor::get_controlador_instanciado() == 'articulos' ){
 ?>
     <div id="propietarios" class="opcion_menu_left">
         <?php
-            $clausulas['where'] = " propietario not in ('Otro')";
+            //$clausulas['where'] = " propietario not in ('Otro')";
             $clausulas['order_by'] = "propietario";
             $datos['propietarios'] = \modelos\articulos::getPropietarios($clausulas);
             //var_dump($datos['propietarios']);

@@ -51,7 +51,7 @@ function setArticulos(){
             html += "<a href='"+href+"' title='"+row['nombre']+
                 "'><h3 class='titulo_art'>"+row['nombre']+"</h3></a><a href='"+href+
                 "' class='media_articulo'>"+img+"</a><div class='datos_articulo'>";
-            html += "<p>Precio:<br/><span class='dato_art'>"+row['precio']+"€</span></p>";
+//            html += "<p>Precio:<br/><span class='dato_art'>"+row['precio']+"€</span></p>";
             html += "<p>Jugadores:<br/><span class='dato_art'>"+rangoJug+"</span></p>";
             html += "<p>Editorial:<br/><span class='dato_art'>"+row['editorial']+"</span></p>";
             html += "</div><div class='masDetalles'><a class='masDetalles' title='Leer reseña'>Más detalles</a>";
