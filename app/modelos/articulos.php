@@ -74,7 +74,11 @@ class articulos extends \core\sgbd\bd {
                 $num = 1;
             }
             
-            $clausulas['where'] .= " and ( requerimiento_id = {$categorias[0]['id']} or (num_min_jug <= $num and num_max_jug >= $num) )"; //categoria extraida
+            if($categoria === '2jugadores'){ //numero exacto para 2 jugadores
+                $clausulas['where'] .= " and requerimiento_id = {$categorias[0]['id']}";
+            }else{
+                $clausulas['where'] .= " and ( requerimiento_id = {$categorias[0]['id']} or (num_min_jug = $num and num_max_jug >= $num) )"; //categoria extraida
+            }
             
             $juegos = \modelos\Modelo_SQL::table(self::$tabla_j)->select($clausulas);
             

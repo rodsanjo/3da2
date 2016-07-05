@@ -44,6 +44,7 @@ class Menus{    //la clase se tiene que llamar igual que el archivo
             ,"solitarios"=>"articulos,categoria,solitario,solitarios" 
             ,"2 jugadores"=>"articulos,categoria,2jugadores,2 jugadores"
             ,"+3 jugadores"=>"articulos,categoria,3jugadores,Minimo 3 jugadores"
+            //,"+4 jugadores"=>"articulos,categoria,4jugadores,Minimo 4 jugadores"
         )
         ,"Expansiones" => "articulos,expansiones,Expansiones de juegos"
         ,"Galería" => array(

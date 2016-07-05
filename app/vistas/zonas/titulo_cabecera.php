@@ -2,6 +2,10 @@
 
 <img src="<?php echo URL_ROOT; ?>recursos/imagenes/logo_letras.jpg" title="3da2" alt="3da2"/>
 
+<?php
+include PATH_APPLICATION_APP."vistas/zonas/buscador_simple.php";
+?>
+
 <div id="central_head" style="float: left;">
     <div id="menu_up" >
         <?php 
@@ -10,8 +14,8 @@
     </div>
 </div>
 
-<div id="buscar">
+<!--<div id="buscar">
     <?php 
-        include PATH_APPLICATION_APP."vistas/zonas/buscar.php";
+        //include PATH_APPLICATION_APP."vistas/zonas/buscador_complejo.php";
     ?>
-</div>
+</div>-->

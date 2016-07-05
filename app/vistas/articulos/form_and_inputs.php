@@ -202,12 +202,12 @@
     function validar_num_max_jug(){
         var num_max_jug = form.num_max_jug.value;
         var num_min_jug = form.num_min_jug.value;
-        //alert(num_min_jug+" - "+num_max_jug);
+        //alert(num_max_jug+" - "+num_min_jug+" = "+ (num_max_jug-num_min_jug) );
 	var patron=/^\d{0,2}$/;
 	if(!patron.test(num_max_jug)){
             document.getElementById("error_num_max_jug").innerHTML="Debe escribir solo números";                
             ok = false;
-	}else if(num_max_jug<num_min_jug){           
+	}else if( (num_max_jug-num_min_jug) < 0 ){
             document.getElementById("error_num_max_jug").innerHTML="Debe ser igual o mayor al número mínimo de jugadores";
             ok = false;
         }else{
