@@ -81,12 +81,13 @@ if( \core\Distribuidor::get_controlador_instanciado() == 'articulos' ){
         Propietarios:
         <form name="form_prop">
             <?php
+            $prop_notShow = array('Lista de los deseos', 'Infancia', 'Viejas glorias', 'Antiguos');
             foreach ($datos['propietarios'] as $key => $propietario) {
                 echo "<input type='checkbox' 
                     id='prop_".$propietario['propietario']."'
                     name='".$propietario['propietario']."'
                     value='".$propietario['propietario']."'";
-                if( $propietario['propietario'] !== 'Lista de los deseos' ){
+                if( ! in_array( $propietario['propietario'], $prop_notShow ) ){
                     echo
                     "onchange='setArticulos()' checked='checked'> ".$propietario['propietario']
                     ."<br/>";
