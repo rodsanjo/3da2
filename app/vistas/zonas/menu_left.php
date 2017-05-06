@@ -86,7 +86,7 @@ if( \core\Distribuidor::get_controlador_instanciado() == 'articulos' ){
                     id='prop_".$propietario['propietario']."'
                     name='".$propietario['propietario']."'
                     value='".$propietario['propietario']."'";
-                if( $propietario['propietario'] !== 'Deseo' ){
+                if( $propietario['propietario'] !== 'Lista de los deseos' ){
                     echo
                     "onchange='setArticulos()' checked='checked'> ".$propietario['propietario']
                     ."<br/>";
