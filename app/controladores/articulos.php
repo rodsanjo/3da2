@@ -715,8 +715,8 @@ class articulos extends \core\Controlador{
         
         //Para type="date" en IE
         if(preg_match("/MSIE|Firefox|Trident/", $_SERVER['HTTP_USER_AGENT'])){  //Para IE7
-                $param['fecha_compra']=  \core\Conversiones::fecha_hora_mysql_a_es($param['fecha_compra']);
-            }
+            $param['fecha_compra']=  \core\Conversiones::fecha_hora_mysql_a_es($param['fecha_compra']);
+        }
     }
     /**
      * Comprueba que los ficheros que el usuario intenta subir a la aplicación cumple con los requerimietnos exigidos.

@@ -63,7 +63,7 @@ if( \core\Distribuidor::get_controlador_instanciado() == 'articulos' ){
 
                 <?php
                 if(! isset($datos['propietarios']) ){
-                    $datos['propietarios'] = array('Beto','Jergo','Mar');
+                    $datos['propietarios'] = array('Beto','Jergo','Mar','Otro','Deseo');
                 }
                 foreach ($datos['propietarios'] as $key => $propietario) {
                 ?>
@@ -85,9 +85,17 @@ if( \core\Distribuidor::get_controlador_instanciado() == 'articulos' ){
                 echo "<input type='checkbox' 
                     id='prop_".$propietario['propietario']."'
                     name='".$propietario['propietario']."'
-                    value='".$propietario['propietario']."'
-                    onchange='setArticulos()' checked='checked'> ".$propietario['propietario']
+                    value='".$propietario['propietario']."'";
+                if( $propietario['propietario'] !== 'Deseo' ){
+                    echo
+                    "onchange='setArticulos()' checked='checked'> ".$propietario['propietario']
                     ."<br/>";
+                }else{
+                    echo 
+                    "onchange='setArticulos()' > ".$propietario['propietario']
+                    ."<br/>";
+                }
+                        
             }
             ?>
         </form>
