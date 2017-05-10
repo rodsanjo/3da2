@@ -60,6 +60,7 @@ class articulos extends \core\sgbd\bd {
         $sql = "select id from $table where categoria like '%$categoria%'";
         $categorias = \modelos\Modelo_SQL::execute($sql);
 
+        //Si no encuentra la categoria es un requerimiento por numero de jugadores
         if(!count($categorias)){
             $table = \modelos\Modelo_SQL::get_prefix_tabla( self::$tabla_req );
             $sql = "select id from $table where tipo like '%$categoria%'";
@@ -74,11 +75,16 @@ class articulos extends \core\sgbd\bd {
                 $num = 1;
             }
             
+            $clausulas['where'] .= " and ( ";
+            //numero de jugadores ideal del juego
+            $clausulas['where'] .= " ( num_ideal_jug like '$num' or num_ideal_jug like '$num,%' or num_ideal_jug like '%,$num,%' or num_ideal_jug like '%,$num' ) ";
+            
             if($categoria === '2jugadores'){ //numero exacto para 2 jugadores
-                $clausulas['where'] .= " and requerimiento_id = {$categorias[0]['id']}";
+                $clausulas['where'] .= " or requerimiento_id = {$categorias[0]['id']}";
             }else{
-                $clausulas['where'] .= " and ( requerimiento_id = {$categorias[0]['id']} or (num_min_jug = $num and num_max_jug >= $num) )"; //categoria extraida
+                $clausulas['where'] .= " or ( requerimiento_id = {$categorias[0]['id']} or (num_min_jug = $num and num_max_jug >= $num) )"; //categoria extraida
             }
+            $clausulas['where'] .= " ) ";
             
             $juegos = \modelos\Modelo_SQL::table(self::$tabla_j)->select($clausulas);
             
@@ -100,6 +106,7 @@ class articulos extends \core\sgbd\bd {
         , "fecha_compra" =>"errores_fecha"
         , "num_min_jug" => "errores_numero_entero_positivo"
         , "num_max_jug" => "errores_numero_entero_positivo"
+        , "num_ideal_jug" => "errores_texto"
         , "duracion" => "errores_texto"
         , "edad_min" => "errores_numero_entero_positivo"                        
         , "categoria_id" => "errores_numero_entero_positivo && errores_referencia:categoria_id/categorias/id"
@@ -122,6 +129,7 @@ class articulos extends \core\sgbd\bd {
         , "fecha_compra" =>"errores_fecha"
         , "num_min_jug" => "errores_numero_entero_positivo"
         , "num_max_jug" => "errores_numero_entero_positivo"
+        , "num_ideal_jug" => "errores_texto"
         , "duracion" => "errores_texto"
         , "edad_min" => "errores_numero_entero_positivo"                        
         , "categoria_id" => "errores_numero_entero_positivo && errores_referencia:categoria_id/categorias/id"

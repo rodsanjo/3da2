@@ -125,6 +125,11 @@
                     <?php echo \core\HTML_Tag::span_error('num_max_jug', $datos); ?>
                     <br />
                 </td>
+                <td>
+                    Número de jugadores ideal: <input id='num_ideal_jug' name='num_ideal_jug' type='text' size='1'  maxlength='5' value='<?php echo \core\Array_Datos::values('num_ideal_jug', $datos); ?>' onblur="validar_num_ideal_jug();"/>
+                    <?php echo \core\HTML_Tag::span_error('num_ideal_jug', $datos); ?>
+                    <br />
+                </td>
             </tr>
 
             <tr>
@@ -215,10 +220,31 @@
 	}
     }
     
+    function validar_num_ideal_jug(){
+//        var num_max_jug = form.num_max_jug.value;
+//        var num_min_jug = form.num_min_jug.value;
+        var num_ideal_jug = form.num_ideal_jug.value;
+
+	var patron=/^\d{0,2}(\,{1}\d{1,2}){0,}$/;
+	if(!patron.test(num_ideal_jug)){
+            document.getElementById("error_num_ideal_jug").innerHTML="Debe escribir números de 1 o 2 dígitos separados por comas";
+            ok = false;
+//	}else if( (num_ideal_jug-num_min_jug) < 0 ){
+//            document.getElementById("error_num_max_jug").innerHTML="Debe ser igual o mayor al número mínimo de jugadores";
+//            ok = false;
+//        }else if( (num_max_jug-num_ideal_jug) < 0 ){
+//            document.getElementById("error_num_max_jug").innerHTML="Debe ser igual o menor al número máximo de jugadores";
+//            ok = false;
+        }else{
+            document.getElementById("error_num_max_jug").innerHTML="";
+	}
+    }
+    
     function validarForm(){
 	ok=true;
 	
 	validar_num_max_jug();
+        validar_num_ideal_jug()
 	
 	//ok=false;	//Si devolvemos false, no se envia el formulario
 	return ok;
