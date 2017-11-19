@@ -50,6 +50,7 @@ class articulos extends \core\sgbd\bd {
     
     public static function getExpansiones(){
         $clausulas['where'] = ' requerimiento_id = 0 '; //Expansiones
+        $clausulas['order_by'] = ' nombre '; //Expansiones
         return \modelos\Modelo_SQL::table(self::$tabla_j)->select($clausulas);       
     }
     

@@ -8,9 +8,11 @@
 <link href="<?php echo URL_ROOT ?>favicon.png" rel="shortcut icon" type="image/x-icon" />
 <link href="<?php echo URL_ROOT ?>favicon.png" rel="icon" type="image/x-icon" /> 
 
+<meta name="title" content="3da2"/>
+<meta name="Description" content="Family's boardgames" />
 <meta name="rating" content="General">
-<meta name="generator" content="con qué se ha hecho" />
-<meta name="origen" content="3da2" />
+<meta name="generator" content="jequeto framework" />
+<meta name="origen" content="Vallekas" />
 <meta name="author" content="Jergo" />
 <meta name="owner" content="3da2">
 <meta name="locality" content="Madrid, España" />
@@ -27,16 +29,16 @@
 
 <!-- for Facebook -->
 <meta property="og:title" content="3da2" />
-<meta property="og:type" content="article" />
-<meta property="og:image" content="http://www.jergapps.com/images/logo.png" />
-<meta property="og:url" content="http://www.jergapps.com/" />
-<meta property="og:description" content="Aplicaciones de la jerga cotidiana" />
+<meta property="og:type" content="library" />
+<meta property="og:image" content="http://jergapps.zz.mu/3da2/recursos/imagenes/logo.png" />
+<meta property="og:url" content="http://jergapps.zz.mu/3da2" />
+<meta property="og:description" content="Juegos de mesa familiares" />
 
 <!-- for Twitter -->
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="3da2" />
 <meta name="twitter:title" content="jergapps" />
-<meta name="twitter:description" content="Aplicaciones de la jerga cotidiana" />
-<meta name="twitter:image" content="http://www.jergapps.com/images/logo.png" />
+<meta name="twitter:description" content="Family¡s boardgames" />
+<meta name="twitter:image" content="http://jergapps.zz.mu/3da2/recursos/imagenes/logo.png" />
 
 <?php 
     include PATH_HOME."app/vistas/zonas/head_bootstrap.php";

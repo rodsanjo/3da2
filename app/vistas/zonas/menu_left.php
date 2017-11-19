@@ -42,7 +42,7 @@
 </ul>
 
 <?php
-    //include PATH_APPLICATION_APP."vistas/zonas/buscador_simple.php";
+    include PATH_APPLICATION_APP."vistas/zonas/buscador_simple.php";
 ?>
 
 <?php

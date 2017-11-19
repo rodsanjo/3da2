@@ -51,11 +51,11 @@
         
     </section>
     <section id="pie" class="container-fluid">
-        <div id="enlaces_down">
+<!--        <div id="enlaces_down">
             <a href="<?php echo URL_ROOT ?>" title="3da2">HOME</a>
             &nbsp;|&nbsp;
             <a href="<?php echo URL_ROOT ?>sitemap.html" title="Mapa Web">MAPA WEB</a>
-        </div>
+        </div>-->
         <div>
             <?php 
                 include PATH_HOME."app/vistas/zonas/pie.php";
